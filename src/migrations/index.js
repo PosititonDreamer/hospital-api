@@ -62,6 +62,19 @@ class migrations {
             console.log('migration table schedule failed');
         }
     }
+    async bearersTable () {
+        try {
+            await db.query("CREATE TABLE bearers (" +
+                "id SERIAL PRIMARY KEY," +
+                "token VARCHAR(30)," +
+                "user_id INTEGER" +
+                ")");
+            console.log('migration table schedule success');
+        }
+        catch (error) {
+            console.log('migration table schedule failed');
+        }
+    }
 }
 
 const migration = new migrations()
@@ -69,3 +82,4 @@ migration.userTable();
 migration.medicalOrganizationsTable();
 migration.doctorsTable();
 migration.schedulesTable();
+migration.bearersTable();
